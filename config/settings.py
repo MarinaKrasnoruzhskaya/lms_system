@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.admindocs',
     'rest_framework',
     'phonenumber_field',
-    'users'
+    'users',
+    'materials',
 ]
 
 MIDDLEWARE = [
