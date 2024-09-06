@@ -63,6 +63,8 @@
 4. Python-dotenv 1.0.1
 5. Psycopg2-bynary 2.9.9
 6. docutils 0.21.2
+7. djangorestframework 3.15.2
+8. django-filter 24.3
 
 Контакты
 ---------------
