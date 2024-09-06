@@ -1,6 +1,6 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, CreateAPIView
 
 from users.models import Payments
 from users.serializers import PaymentsSerializer
@@ -15,3 +15,7 @@ class PaymentsListAPIView(ListAPIView):
     ordering_fields = ('payment_date',)
     filterset_fields = ('paid_course', 'paid_lesson', 'payment_method')
 
+
+class PaymentsCreateAPIView(CreateAPIView):
+    """ Класс-контроллер на основе базового класса дженерика для создания платежа """
+    serializer_class = PaymentsSerializer
