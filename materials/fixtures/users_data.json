@@ -1,1 +1,132 @@
-[{"model": "users.user", "pk": 1, "fields": {"password": "pbkdf2_sha256$870000$KDSmaSLjzvbFTkdLlgGNBm$eZ7sgdKCP+KBMAflgZMBK7V30BuXp9dbDG4DwZUCb1c=", "last_login": "2024-09-10T10:58:09.179Z", "is_superuser": true, "first_name": "", "last_name": "", "is_staff": true, "is_active": true, "date_joined": "2024-09-06T08:34:34.240Z", "email": "admin@lms.com", "phone_number": null, "city": null, "avatar": "", "groups": [], "user_permissions": []}}, {"model": "users.user", "pk": 4, "fields": {"password": "pbkdf2_sha256$870000$4RYoKlRNIb3ktCxaWGhdnN$C4qis77HVykD3TrrxeQLRV+LFsnBFv8+QoCYYxBoNIE=", "last_login": null, "is_superuser": false, "first_name": "", "last_name": "", "is_staff": false, "is_active": true, "date_joined": "2024-09-06T09:07:38.317Z", "email": "user_1@lms.com", "phone_number": null, "city": null, "avatar": "", "groups": [], "user_permissions": []}}, {"model": "users.user", "pk": 5, "fields": {"password": "123456", "last_login": null, "is_superuser": false, "first_name": "", "last_name": "", "is_staff": false, "is_active": true, "date_joined": "2024-09-06T09:07:38.607Z", "email": "user_2@lms.com", "phone_number": null, "city": "Москва", "avatar": "", "groups": [], "user_permissions": []}}, {"model": "users.user", "pk": 6, "fields": {"password": "pbkdf2_sha256$870000$WR1rqSvnFJOAWnG0jV6cqu$b5Is+3RkSBZNDYII1yIN8WrLjF3m9fzKnts2BOTfAnA=", "last_login": null, "is_superuser": false, "first_name": "", "last_name": "", "is_staff": false, "is_active": true, "date_joined": "2024-09-10T10:32:14Z", "email": "moderator@lms.com", "phone_number": null, "city": null, "avatar": "", "groups": [1], "user_permissions": []}}, {"model": "users.payments", "pk": 1, "fields": {"user": 4, "payment_date": "2024-09-06T20:38:21.928Z", "paid_course": 2, "paid_lesson": null, "payment_amount": "10000.00", "payment_method": "card"}}, {"model": "users.payments", "pk": 2, "fields": {"user": 5, "payment_date": "2024-09-06T20:38:21.928Z", "paid_course": null, "paid_lesson": 3, "payment_amount": "3000.00", "payment_method": "cash"}}, {"model": "users.payments", "pk": 3, "fields": {"user": 5, "payment_date": "2024-09-06T20:38:21.928Z", "paid_course": null, "paid_lesson": 4, "payment_amount": "3500.00", "payment_method": "cash"}}, {"model": "users.payments", "pk": 4, "fields": {"user": 5, "payment_date": "2024-09-06T21:01:29.749Z", "paid_course": null, "paid_lesson": 2, "payment_amount": "3000.00", "payment_method": "cash"}}]
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$870000$KDSmaSLjzvbFTkdLlgGNBm$eZ7sgdKCP+KBMAflgZMBK7V30BuXp9dbDG4DwZUCb1c=",
+      "last_login": "2024-09-10T10:58:09.179Z",
+      "is_superuser": true,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-09-06T08:34:34.240Z",
+      "email": "admin@lms.com",
+      "phone_number": null,
+      "city": null,
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$870000$4RYoKlRNIb3ktCxaWGhdnN$C4qis77HVykD3TrrxeQLRV+LFsnBFv8+QoCYYxBoNIE=",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-09-06T09:07:38.317Z",
+      "email": "user_1@lms.com",
+      "phone_number": null,
+      "city": null,
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 5,
+    "fields": {
+      "password": "123456",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-09-06T09:07:38.607Z",
+      "email": "user_2@lms.com",
+      "phone_number": null,
+      "city": "Москва",
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$870000$WR1rqSvnFJOAWnG0jV6cqu$b5Is+3RkSBZNDYII1yIN8WrLjF3m9fzKnts2BOTfAnA=",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-09-10T10:32:14Z",
+      "email": "moderator@lms.com",
+      "phone_number": null,
+      "city": null,
+      "avatar": "",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.payments",
+    "pk": 1,
+    "fields": {
+      "user": 4,
+      "payment_date": "2024-09-06T20:38:21.928Z",
+      "paid_course": 2,
+      "paid_lesson": null,
+      "payment_amount": "10000.00",
+      "payment_method": "card"
+    }
+  },
+  {
+    "model": "users.payments",
+    "pk": 2,
+    "fields": {
+      "user": 5,
+      "payment_date": "2024-09-06T20:38:21.928Z",
+      "paid_course": null,
+      "paid_lesson": 3,
+      "payment_amount": "3000.00",
+      "payment_method": "cash"
+    }
+  },
+  {
+    "model": "users.payments",
+    "pk": 3,
+    "fields": {
+      "user": 5,
+      "payment_date": "2024-09-06T20:38:21.928Z",
+      "paid_course": null,
+      "paid_lesson": 4,
+      "payment_amount": "3500.00",
+      "payment_method": "cash"
+    }
+  },
+  {
+    "model": "users.payments",
+    "pk": 4,
+    "fields": {
+      "user": 5,
+      "payment_date": "2024-09-06T21:01:29.749Z",
+      "paid_course": null,
+      "paid_lesson": 2,
+      "payment_amount": "3000.00",
+      "payment_method": "cash"
+    }
+  }
+]
