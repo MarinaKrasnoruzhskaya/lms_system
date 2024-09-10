@@ -27,3 +27,12 @@ class UserDetailSerializer(ModelSerializer):
     class Meta:
         model = User
         fields = "__all__"
+
+
+class UserDetailRestUserSerializer(ModelSerializer):
+    """Класс-сериализатор для детального представления пользователя для других остальных пользователей"""
+
+    class Meta:
+        model = User
+        exclude = ('first_name', 'password')
+

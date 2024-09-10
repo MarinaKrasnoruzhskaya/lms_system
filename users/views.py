@@ -7,10 +7,11 @@ from rest_framework.generics import (
     RetrieveAPIView,
     DestroyAPIView,
 )
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from users.models import Payments, User
-from users.serializers import PaymentsSerializer, UserSerializer, UserDetailSerializer
+from users.permissions import IsProfile
+from users.serializers import PaymentsSerializer, UserSerializer, UserDetailSerializer, UserDetailRestUserSerializer
 
 
 class PaymentsListAPIView(ListAPIView):
@@ -35,6 +36,7 @@ class UserUpdateAPIView(UpdateAPIView):
 
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated, IsProfile]
 
 
 class UserRetrieveAPIView(RetrieveAPIView):
@@ -42,6 +44,14 @@ class UserRetrieveAPIView(RetrieveAPIView):
 
     queryset = User.objects.all()
     serializer_class = UserDetailSerializer
+
+    def get_serializer_class(self):
+        """ Метод предоставления сериализатор со всеми полями для своего профиля
+        и сериализатор с общими полями для чужого профиля """
+
+        if IsProfile().has_permission(self.request, self):
+            return UserDetailSerializer
+        return UserDetailRestUserSerializer
 
 
 class UserDestroyAPIView(DestroyAPIView):
