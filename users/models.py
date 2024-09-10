@@ -4,7 +4,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 from materials.models import Course, Lesson
 
-NULLABLE = {'blank': True, 'null': True}
+NULLABLE = {"blank": True, "null": True}
 
 
 class User(AbstractUser):
@@ -19,8 +19,8 @@ class User(AbstractUser):
     )
 
     phone_number = PhoneNumberField(
-        verbose_name='Номер телефона',
-        help_text='Введите номер телефона',
+        verbose_name="Номер телефона",
+        help_text="Введите номер телефона",
         **NULLABLE,
     )
     city = models.CharField(
@@ -48,51 +48,52 @@ class User(AbstractUser):
 
 
 class Payments(models.Model):
-    """ Класс для модели Платежи"""
+    """Класс для модели Платежи"""
+
     PAY_METHODS = (
-        ('card', 'Карта'),
-        ('cash', 'Наличные'),
+        ("card", "Карта"),
+        ("cash", "Наличные"),
     )
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        verbose_name='Пользователь',
-        help_text='Выберите пользователя',
+        verbose_name="Пользователь",
+        help_text="Выберите пользователя",
     )
     payment_date = models.DateTimeField(
         auto_now_add=True,
-        verbose_name='Дата оплаты',
+        verbose_name="Дата оплаты",
     )
     paid_course = models.ForeignKey(
         Course,
         on_delete=models.CASCADE,
-        verbose_name='Оплаченный курс',
-        help_text='Выберите курс',
+        verbose_name="Оплаченный курс",
+        help_text="Выберите курс",
         **NULLABLE,
     )
     paid_lesson = models.ForeignKey(
         Lesson,
         on_delete=models.CASCADE,
-        verbose_name='Оплаченный урок',
-        help_text='Выберите урок',
+        verbose_name="Оплаченный урок",
+        help_text="Выберите урок",
         **NULLABLE,
     )
     payment_amount = models.DecimalField(
         max_digits=10,
         decimal_places=2,
-        verbose_name='Сумма оплаты',
-        help_text='Введите сумму оплаты',
+        verbose_name="Сумма оплаты",
+        help_text="Введите сумму оплаты",
     )
     payment_method = models.CharField(
-        verbose_name='Способ оплаты',
-        help_text='Выберите способ оплаты',
+        verbose_name="Способ оплаты",
+        help_text="Выберите способ оплаты",
         choices=PAY_METHODS,
     )
 
     class Meta:
         verbose_name = "Платеж"
         verbose_name_plural = "Платежи"
-        ordering = ['-payment_date']
+        ordering = ["-payment_date"]
 
     def __str__(self):
         return f"Платеж {self.id} от {self.payment_date} на сумму {self.payment_amount}. Оплатил: {self.user} "
