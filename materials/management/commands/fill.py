@@ -1,10 +1,12 @@
 import json
+import os
 
 from django.contrib.auth.models import Group, Permission
 from django.contrib.contenttypes.models import ContentType
 from django.core.management import BaseCommand
 from django.db import connection
 
+from config.settings import BASE_DIR
 from materials.models import Course, Lesson
 from users.models import User, Payments
 
@@ -15,7 +17,8 @@ class Command(BaseCommand):
     @staticmethod
     def json_read(name_file: str) -> dict:
         """Метод считывает данные из json-файла"""
-        with open(name_file, "r", encoding="utf-8") as file:
+        all_name_file = os.path.join(BASE_DIR, "materials", "fixtures", name_file)
+        with open(all_name_file, "r", encoding="utf-8") as file:
             data = json.load(file)
         return data
 
