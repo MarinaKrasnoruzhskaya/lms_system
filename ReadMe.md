@@ -53,6 +53,12 @@
    python manage.py runserver
    ```
 
+Пользователи проекта:
+---------------
+1. Superuser: {"email": "admin@lms.com", "password": "admin"}
+2. Moderator: {"email": "moderator@lms.com", "password": "moderator"}
+3. Users: {"email": "user_1@lms.com", "password": "123456"}, {"email": "user_2@lms.com", "password": "123456"}
+
 
 Построен с:
 ---------------
