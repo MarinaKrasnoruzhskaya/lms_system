@@ -26,7 +26,7 @@
    ```
 5. Установить зависимости
    ```sh
-   pip install -r requirements.tx
+   pip install -r requirements.txt
    ```
 6. Заполнить файл ```.env.sample``` и переименовать его, дав имя ```.env```
 7. Создать БД ```lms_system```
