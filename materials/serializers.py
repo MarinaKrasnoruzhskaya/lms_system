@@ -1,10 +1,11 @@
 from rest_framework.fields import SerializerMethodField
-from rest_framework.serializers import ModelSerializer
+from rest_framework import serializers
 
 from materials.models import Course, Lesson
+from materials.validators import validate_link_to_video
 
 
-class CourseSerializer(ModelSerializer):
+class CourseSerializer(serializers.ModelSerializer):
     """Класс-сериализатор для модели Курс, добавлено динамическое поле"""
 
     count_lesson = SerializerMethodField()
@@ -23,8 +24,10 @@ class CourseSerializer(ModelSerializer):
         return [lesson.title for lesson in Lesson.objects.filter(course=course)]
 
 
-class LessonSerializer(ModelSerializer):
+class LessonSerializer(serializers.ModelSerializer):
     """Класс-сериализатор для модели Урок"""
+
+    link_to_video = serializers.CharField(validators=[validate_link_to_video])
 
     class Meta:
         model = Lesson
