@@ -1,7 +1,7 @@
 from rest_framework.fields import SerializerMethodField
 from rest_framework import serializers
 
-from materials.models import Course, Lesson
+from materials.models import Course, Lesson, Subscription
 from materials.validators import validate_link_to_video
 
 
@@ -10,6 +10,7 @@ class CourseSerializer(serializers.ModelSerializer):
 
     count_lesson = SerializerMethodField()
     lessons = SerializerMethodField()
+    is_subscription = SerializerMethodField()
 
     class Meta:
         model = Course
@@ -23,6 +24,10 @@ class CourseSerializer(serializers.ModelSerializer):
         """Метод возвращает список уроков для объекта course"""
         return [lesson.title for lesson in Lesson.objects.filter(course=course)]
 
+    def get_is_subscription(self, course):
+        """Метод возвращает True, если у текущего пользователя есть подписка на данный курс"""
+        return Subscription.objects.filter(user=self.context['request'].user, course=course).exists()
+
 
 class LessonSerializer(serializers.ModelSerializer):
     """Класс-сериализатор для модели Урок"""
@@ -31,4 +36,12 @@ class LessonSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Lesson
+        fields = "__all__"
+
+
+class SubscriptionSerializer(serializers.ModelSerializer):
+    """ Класс-сериализатор для модели Подписки"""
+
+    class Meta:
+        model = Subscription
         fields = "__all__"
