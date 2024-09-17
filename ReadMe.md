@@ -11,7 +11,7 @@
    ```sh
    git clone https://github.com/MarinaKrasnoruzhskaya/lms_system
    ```
-2. Перейти в директорию django_shop
+2. Перейти в директорию 
    ```sh
    cd lms_system
    ```
