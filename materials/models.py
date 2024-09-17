@@ -29,8 +29,7 @@ class Course(models.Model):
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
-        blank=True,
-        null=True,
+        **NULLABLE,
         verbose_name="Владелец",
         help_text="Укажите владельца курса",
     )
@@ -92,3 +91,29 @@ class Lesson(models.Model):
         verbose_name = "урок"
         verbose_name_plural = "уроки"
         ordering = ("title",)
+
+
+class Subscription(models.Model):
+    """Класс для модели подписки"""
+
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        **NULLABLE,
+        verbose_name="Пользователь",
+        help_text="Укажите пользователя подписки",
+    )
+    course = models.ForeignKey(
+        Course,
+        on_delete=models.SET_NULL,
+        verbose_name="Курс",
+        help_text="Выберите курс",
+        **NULLABLE,
+    )
+
+    def __str__(self):
+        return f"{self.user} - {self.course}"
+
+    class Meta:
+        verbose_name = "подписка"
+        verbose_name_plural = "подписки"

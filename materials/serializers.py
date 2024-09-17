@@ -1,14 +1,16 @@
 from rest_framework.fields import SerializerMethodField
-from rest_framework.serializers import ModelSerializer
+from rest_framework import serializers
 
-from materials.models import Course, Lesson
+from materials.models import Course, Lesson, Subscription
+from materials.validators import validate_link_to_video
 
 
-class CourseSerializer(ModelSerializer):
+class CourseSerializer(serializers.ModelSerializer):
     """Класс-сериализатор для модели Курс, добавлено динамическое поле"""
 
     count_lesson = SerializerMethodField()
     lessons = SerializerMethodField()
+    is_subscription = SerializerMethodField()
 
     class Meta:
         model = Course
@@ -22,10 +24,24 @@ class CourseSerializer(ModelSerializer):
         """Метод возвращает список уроков для объекта course"""
         return [lesson.title for lesson in Lesson.objects.filter(course=course)]
 
+    def get_is_subscription(self, course):
+        """Метод возвращает True, если у текущего пользователя есть подписка на данный курс"""
+        return Subscription.objects.filter(user=self.context['request'].user, course=course).exists()
 
-class LessonSerializer(ModelSerializer):
+
+class LessonSerializer(serializers.ModelSerializer):
     """Класс-сериализатор для модели Урок"""
+
+    link_to_video = serializers.CharField(validators=[validate_link_to_video], default=None)
 
     class Meta:
         model = Lesson
+        fields = "__all__"
+
+
+class SubscriptionSerializer(serializers.ModelSerializer):
+    """ Класс-сериализатор для модели Подписки"""
+
+    class Meta:
+        model = Subscription
         fields = "__all__"

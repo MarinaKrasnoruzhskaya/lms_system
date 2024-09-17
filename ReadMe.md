@@ -5,14 +5,13 @@
 - Реализована работа над SPA веб-приложением. Результат проекта - бэкенд-сервер, который возвращает клиенту
   JSON-структуры.
 
-Инструкции по установке
-------------
+## Инструкции по установке
 
 1. Клонировать репозиторий
    ```sh
    git clone https://github.com/MarinaKrasnoruzhskaya/lms_system
    ```
-2. Перейти в директорию django_shop
+2. Перейти в директорию 
    ```sh
    cd lms_system
    ```
@@ -44,8 +43,7 @@
    python manage.py fill
    ```
 
-Руководство по использованию
----------------
+## Руководство по использованию
 
 1. Для запуска проекта в терминале IDE выполните команду:
 
@@ -53,15 +51,15 @@
    python manage.py runserver
    ```
 
-Пользователи проекта:
----------------
+## Пользователи проекта:
+
 1. Superuser: {"email": "admin@lms.com", "password": "admin"}
 2. Moderator: {"email": "moderator@lms.com", "password": "moderator"}
-3. Users: {"email": "user_1@lms.com", "password": "123456"}, {"email": "user_2@lms.com", "password": "123456"}
+3. Users: {"email": "user_1@lms.com", "password": "123456"}, {"email": "user_2@lms.com", "password": "123456"}, 
+{"email": "owner_course@lms.com","password": "owner"}
 
 
-Построен с:
----------------
+## Построен с:
 
 1. Python 3.12
 2. env
@@ -72,12 +70,8 @@
 7. djangorestframework 3.15.2
 8. django-filter 24.3
 
-Контакты
----------------
-Марина Красноружская - krasnoruzhskayamarina@yandex.ru
+## Лицензия:
 
-Ссылка на
-проект: [https://github.com/MarinaKrasnoruzhskaya/django_shop](https://github.com/MarinaKrasnoruzhskaya/django_shop)
-
+Проект распространяется под [лицензией MIT](LICENSE).
 <p align="right">(<a href="#readme-top">Наверх</a>)</p>
 
