@@ -32,7 +32,7 @@ class CourseSerializer(serializers.ModelSerializer):
 class LessonSerializer(serializers.ModelSerializer):
     """Класс-сериализатор для модели Урок"""
 
-    link_to_video = serializers.CharField(validators=[validate_link_to_video])
+    link_to_video = serializers.CharField(validators=[validate_link_to_video], default=None)
 
     class Meta:
         model = Lesson
