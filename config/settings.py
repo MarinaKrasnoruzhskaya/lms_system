@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "phonenumber_field",
     "users",
     "materials",
+    "drf_spectacular",
 ]
 
 MIDDLEWARE = [
@@ -90,6 +91,7 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticated",
     ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 # Database
@@ -157,4 +159,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'LMS-система',
+    'DESCRIPTION': 'платформа для онлайн-обучения, в которой каждый желающий может размещать свои полезные материалы',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
 }
