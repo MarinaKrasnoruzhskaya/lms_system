@@ -1,3 +1,5 @@
+from drf_spectacular.types import OpenApiTypes
+from drf_spectacular.utils import extend_schema_field
 from rest_framework.fields import SerializerMethodField
 from rest_framework import serializers
 
@@ -16,14 +18,16 @@ class CourseSerializer(serializers.ModelSerializer):
         model = Course
         fields = "__all__"
 
+    @extend_schema_field(OpenApiTypes.INT)
     def get_count_lesson(self, course):
         """Метод возвращает количество уроков для объекта"""
         return course.lesson_set.count()
 
-    def get_lessons(self, course):
+    def get_lessons(self, course) -> list[str]:
         """Метод возвращает список уроков для объекта course"""
         return [lesson.title for lesson in Lesson.objects.filter(course=course)]
 
+    @extend_schema_field(OpenApiTypes.BOOL)
     def get_is_subscription(self, course):
         """Метод возвращает True, если у текущего пользователя есть подписка на данный курс"""
         return Subscription.objects.filter(user=self.context['request'].user, course=course).exists()

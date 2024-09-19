@@ -95,6 +95,7 @@ class LessonDestroyAPIView(DestroyAPIView):
     """Класс-контроллер на основе базового класса дженерика для удаления урока"""
 
     queryset = Lesson.objects.all()
+    serializer_class = LessonSerializer
     permission_classes = [IsAuthenticated, ~IsModerator | IsOwner]
 
 

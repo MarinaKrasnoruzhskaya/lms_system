@@ -45,7 +45,7 @@ class UserRetrieveAPIView(RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserDetailSerializer
 
-    def get_serializer_class(self):
+    def get_serializer_class(self, *args, **kwargs):
         """ Метод предоставления сериализатор со всеми полями для своего профиля
         и сериализатор с общими полями для чужого профиля """
 
@@ -53,11 +53,16 @@ class UserRetrieveAPIView(RetrieveAPIView):
             return UserDetailSerializer
         return UserDetailRestUserSerializer
 
+    def get_queryset(self):
+        """ Метод возвращает объект Queryset по переданному pk """
+        return self.queryset.filter(pk=self.kwargs.get('pk'))
+
 
 class UserDestroyAPIView(DestroyAPIView):
     """Класс-контроллер на основе базового класса дженерика для удаления пользователя"""
 
     queryset = User.objects.all()
+    serializer_class = UserDetailSerializer
 
 
 class UserCreateAPIView(CreateAPIView):
