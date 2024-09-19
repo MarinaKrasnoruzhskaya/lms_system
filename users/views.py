@@ -1,4 +1,5 @@
 from django_filters.rest_framework import DjangoFilterBackend
+from drf_spectacular.utils import extend_schema, OpenApiParameter, PolymorphicProxySerializer
 from rest_framework import filters
 from rest_framework.generics import (
     ListAPIView,
@@ -43,7 +44,13 @@ class UserRetrieveAPIView(RetrieveAPIView):
     """Класс-контроллер на основе базового класса дженерика для отображения одного пользователя"""
 
     queryset = User.objects.all()
-    serializer_class = UserDetailSerializer
+
+    def get_queryset(self):
+        """ Метод возвращает объект Queryset по переданному pk """
+
+        queryset = super().get_queryset()
+        queryset = queryset.filter(pk=self.kwargs.get('pk'))
+        return queryset
 
     def get_serializer_class(self, *args, **kwargs):
         """ Метод предоставления сериализатор со всеми полями для своего профиля
@@ -52,10 +59,6 @@ class UserRetrieveAPIView(RetrieveAPIView):
         if IsProfile().has_permission(self.request, self):
             return UserDetailSerializer
         return UserDetailRestUserSerializer
-
-    def get_queryset(self):
-        """ Метод возвращает объект Queryset по переданному pk """
-        return self.queryset.filter(pk=self.kwargs.get('pk'))
 
 
 class UserDestroyAPIView(DestroyAPIView):
