@@ -62,6 +62,7 @@ class PaymentsRetrieveAPIView(RetrieveAPIView):
         obj = get_object_or_404(queryset, **filter_dict)
         if obj.payment_status != "complete":
             obj.payment_status = get_retrieve_session(obj.session_id)
+            obj.save()
         return obj
 
 
