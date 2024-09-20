@@ -13,6 +13,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from users.models import Payments, User
 from users.permissions import IsProfile
 from users.serializers import PaymentsSerializer, UserSerializer, UserDetailSerializer, UserDetailRestUserSerializer
+from users.services import create_stripe_price, create_stripe_session, create_stripe_product
 
 
 class PaymentsListAPIView(ListAPIView):
@@ -30,6 +31,16 @@ class PaymentsCreateAPIView(CreateAPIView):
     """Класс-контроллер на основе базового класса дженерика для создания платежа"""
 
     serializer_class = PaymentsSerializer
+    queryset = Payments.objects.all()
+
+    def perform_create(self, serializer):
+        payment = serializer.save(user=self.request.user)
+        product = create_stripe_product(payment)
+        price = create_stripe_price(int(payment.payment_amount), product.name)
+        session_id, payment_link = create_stripe_session(price)
+        payment.session_id = session_id
+        payment.link = payment_link
+        payment.save()
 
 
 class UserUpdateAPIView(UpdateAPIView):

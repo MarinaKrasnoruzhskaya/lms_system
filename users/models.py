@@ -57,6 +57,7 @@ class Payments(models.Model):
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
+        **NULLABLE,
         verbose_name="Пользователь",
         help_text="Выберите пользователя",
     )
@@ -89,6 +90,19 @@ class Payments(models.Model):
         help_text="Выберите способ оплаты",
         choices=PAY_METHODS,
     )
+    session_id = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        verbose_name="ID сессии",
+    )
+    link = models.URLField(
+        max_length=400,
+        blank=True,
+        null=True,
+        verbose_name="Ссылка на оплату",
+    )
+
 
     class Meta:
         verbose_name = "Платеж"
