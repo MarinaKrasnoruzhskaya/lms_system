@@ -11,6 +11,15 @@ class PaymentsSerializer(ModelSerializer):
         fields = "__all__"
 
 
+class PaymentsRetrieveSerializer(ModelSerializer):
+    """Класс-сериализатор для модели Платежи для просмотра платежа по session_id"""
+
+    class Meta:
+        model = Payments
+        fields = "__all__"
+        lookup_field = 'session_id'
+
+
 class UserSerializer(ModelSerializer):
     """Класс-сериализатор для модели Пользователь"""
 
@@ -35,4 +44,3 @@ class UserDetailRestUserSerializer(ModelSerializer):
     class Meta:
         model = User
         exclude = ('first_name', 'password')
-

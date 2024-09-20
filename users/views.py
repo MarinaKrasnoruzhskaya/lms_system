@@ -1,19 +1,20 @@
 from django_filters.rest_framework import DjangoFilterBackend
-from drf_spectacular.utils import extend_schema, OpenApiParameter, PolymorphicProxySerializer
 from rest_framework import filters
 from rest_framework.generics import (
     ListAPIView,
     CreateAPIView,
     UpdateAPIView,
     RetrieveAPIView,
-    DestroyAPIView,
+    DestroyAPIView, get_object_or_404,
 )
 from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.response import Response
 
 from users.models import Payments, User
 from users.permissions import IsProfile
-from users.serializers import PaymentsSerializer, UserSerializer, UserDetailSerializer, UserDetailRestUserSerializer
-from users.services import create_stripe_price, create_stripe_session, create_stripe_product
+from users.serializers import PaymentsSerializer, UserSerializer, UserDetailSerializer, UserDetailRestUserSerializer, \
+    PaymentsRetrieveSerializer
+from users.services import create_stripe_price, create_stripe_session, create_stripe_product, get_retrieve_session
 
 
 class PaymentsListAPIView(ListAPIView):
@@ -42,6 +43,26 @@ class PaymentsCreateAPIView(CreateAPIView):
             payment.session_id = session_id
             payment.link = payment_link
         payment.save()
+
+
+class PaymentsRetrieveAPIView(RetrieveAPIView):
+    """Класс-контроллер на основе базового класса дженерика для просмотра платежа по session_id"""
+
+    serializer_class = PaymentsRetrieveSerializer
+    queryset = Payments.objects.all()
+    permission_classes = [AllowAny,]
+    lookup_field = 'session_id'
+
+    def get_object(self):
+        """ Метод возвращает объект Queryset по переданному session_id """
+
+        queryset = self.get_queryset()
+        filter_dict = dict()
+        filter_dict[self.lookup_field] = self.kwargs[self.lookup_field]
+        obj = get_object_or_404(queryset, **filter_dict)
+        if obj.payment_status != "complete":
+            obj.payment_status = get_retrieve_session(obj.session_id)
+        return obj
 
 
 class UserUpdateAPIView(UpdateAPIView):

@@ -9,7 +9,7 @@ from users.views import (
     UserUpdateAPIView,
     UserRetrieveAPIView,
     UserCreateAPIView,
-    UserDestroyAPIView,
+    UserDestroyAPIView, PaymentsRetrieveAPIView,
 )
 
 app_name = UsersConfig.name
@@ -17,6 +17,7 @@ app_name = UsersConfig.name
 urlpatterns = [
     path("payments/", PaymentsListAPIView.as_view(), name="payments-list"),
     path("payments/create/", PaymentsCreateAPIView.as_view(), name="payments-create"),
+    path("payments/<str:session_id>/", PaymentsRetrieveAPIView.as_view(), name="payments-retrieve"),
     path("<int:pk>/update/", UserUpdateAPIView.as_view(), name="user-update"),
     path("<int:pk>/", UserRetrieveAPIView.as_view(), name="user-detail"),
     path("<int:pk>/delete/", UserDestroyAPIView.as_view(), name="user-delete"),

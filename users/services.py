@@ -28,8 +28,15 @@ def create_stripe_session(price):
     """ Создает сессию оплаты в страйпе """
 
     session = stripe.checkout.Session.create(
-        success_url="http://127.0.0.1:8000/",
+        success_url='http://localhost:8000/' + 'users/payments/{CHECKOUT_SESSION_ID}',
         line_items=[{"price": price.get('id'), "quantity": 1}],
         mode="payment",
     )
     return session.get('id'), session.get('url')
+
+
+def get_retrieve_session(id_session):
+    """ Получает информацию о сессии оплаты в страйпе """
+
+    session = stripe.checkout.Session.retrieve(id_session)
+    return session.get('status')

@@ -102,7 +102,12 @@ class Payments(models.Model):
         null=True,
         verbose_name="Ссылка на оплату",
     )
-
+    payment_status = models.CharField(
+        verbose_name="Статус оплаты",
+        blank=True,
+        null=True,
+        default="Awaiting payment",
+    )
 
     class Meta:
         verbose_name = "Платеж"
@@ -110,4 +115,4 @@ class Payments(models.Model):
         ordering = ["-payment_date"]
 
     def __str__(self):
-        return f"Платеж {self.id} от {self.payment_date} на сумму {self.payment_amount}. Оплатил: {self.user} "
+        return f"Платеж {self.pk} от {self.payment_date} на сумму {self.payment_amount}. Оплатил: {self.user} "

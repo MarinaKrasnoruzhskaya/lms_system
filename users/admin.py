@@ -14,4 +14,7 @@ class PaymentsAdmin(admin.ModelAdmin):
         "paid_lesson",
         "payment_amount",
         "payment_method",
+        "session_id",
+        "payment_status",
+        "link"
     )
