@@ -166,7 +166,24 @@ SPECTACULAR_SETTINGS = {
     'DESCRIPTION': 'платформа для онлайн-обучения, в которой каждый желающий может размещать свои полезные материалы',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
-    # OTHER SETTINGS
+    'SWAGGER_URL': '/swagger/',
+    'OPENAPI_URL': '/openapi/',
+    'REDOC_URL': '/redoc/',
+    'DEFAULT_AUTO_SCHEMA': 'drf_spectacular.openapi.AutoSchema',
+    'DEFAULT_VERSION': 'v1',
+    'DEFAULT_TYPE_MAPPING': {
+        'decimal': 'number',
+        'date': 'string',
+        'DateTimeField': 'string',
+        'TimeField': 'string',
+    },
+    "SWAGGER_UI_SETTINGS": {
+        "deepLinking": True,
+        "persistAuthorization": True,
+        "displayOperationId": True,
+        "filter": True,
+    },
+    "COMPONENT_SPLIT_REQUEST": True
 }
 
 STRIPE_API_KEY = os.getenv("STRIPE_API_KEY")

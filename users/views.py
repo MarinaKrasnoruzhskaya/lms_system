@@ -1,5 +1,6 @@
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import filters
+from drf_spectacular.utils import extend_schema, PolymorphicProxySerializer, extend_schema_view, OpenApiResponse
+from rest_framework import filters, status
 from rest_framework.generics import (
     ListAPIView,
     CreateAPIView,
@@ -8,7 +9,6 @@ from rest_framework.generics import (
     DestroyAPIView, get_object_or_404,
 )
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from rest_framework.response import Response
 
 from users.models import Payments, User
 from users.permissions import IsProfile
@@ -74,25 +74,47 @@ class UserUpdateAPIView(UpdateAPIView):
     permission_classes = [IsAuthenticated, IsProfile]
 
 
+@extend_schema_view(
+    retrieve=extend_schema(
+        responses={
+            status.HTTP_200_OK: UserSerializer,
+            status.HTTP_500_INTERNAL_SERVER_ERROR: OpenApiResponse(
+                response=None,
+                description='Описание 500 ответа'),
+        },
+    ),
+)
 class UserRetrieveAPIView(RetrieveAPIView):
     """Класс-контроллер на основе базового класса дженерика для отображения одного пользователя"""
 
     queryset = User.objects.all()
+    serializer_class = UserDetailSerializer
 
-    def get_queryset(self):
+    def get_object(self):
         """ Метод возвращает объект Queryset по переданному pk """
 
         queryset = super().get_queryset()
         queryset = queryset.filter(pk=self.kwargs.get('pk'))
-        return queryset
+        return queryset.first()
 
+    # @extend_schema(responses={
+    #     200: PolymorphicProxySerializer(
+    #         component_name='User',
+    #         serializers=[UserDetailSerializer, UserDetailRestUserSerializer],
+    #         resource_type_field_name='pk',
+    #     ),
+    # })
     def get_serializer_class(self, *args, **kwargs):
         """ Метод предоставления сериализатор со всеми полями для своего профиля
         и сериализатор с общими полями для чужого профиля """
 
+        if getattr(self, 'swagger_fake_view', False):  # drf-yasg comp
+            return User.objects.none()
         if IsProfile().has_permission(self.request, self):
-            return UserDetailSerializer
-        return UserDetailRestUserSerializer
+            serializer_class = UserDetailSerializer
+        else:
+            serializer_class = UserDetailRestUserSerializer
+        return serializer_class
 
 
 class UserDestroyAPIView(DestroyAPIView):
