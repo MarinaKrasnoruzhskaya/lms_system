@@ -1,1 +1,179 @@
-[{"model": "users.user", "pk": 1, "fields": {"password": "pbkdf2_sha256$870000$KDSmaSLjzvbFTkdLlgGNBm$eZ7sgdKCP+KBMAflgZMBK7V30BuXp9dbDG4DwZUCb1c=", "last_login": "2024-09-10T10:58:09.179Z", "is_superuser": true, "first_name": "", "last_name": "", "is_staff": true, "is_active": true, "date_joined": "2024-09-06T08:34:34.240Z", "email": "admin@lms.com", "phone_number": null, "city": null, "avatar": "", "groups": [], "user_permissions": []}}, {"model": "users.user", "pk": 4, "fields": {"password": "pbkdf2_sha256$870000$4RYoKlRNIb3ktCxaWGhdnN$C4qis77HVykD3TrrxeQLRV+LFsnBFv8+QoCYYxBoNIE=", "last_login": null, "is_superuser": false, "first_name": "", "last_name": "", "is_staff": false, "is_active": true, "date_joined": "2024-09-06T09:07:38.317Z", "email": "user_1@lms.com", "phone_number": null, "city": null, "avatar": "", "groups": [], "user_permissions": []}}, {"model": "users.user", "pk": 5, "fields": {"password": "pbkdf2_sha256$870000$4RYoKlRNIb3ktCxaWGhdnN$C4qis77HVykD3TrrxeQLRV+LFsnBFv8+QoCYYxBoNIE=", "last_login": null, "is_superuser": false, "first_name": "", "last_name": "", "is_staff": false, "is_active": true, "date_joined": "2024-09-06T09:07:38Z", "email": "user_2@lms.com", "phone_number": null, "city": "Москва", "avatar": "", "groups": [], "user_permissions": []}}, {"model": "users.user", "pk": 6, "fields": {"password": "pbkdf2_sha256$870000$WR1rqSvnFJOAWnG0jV6cqu$b5Is+3RkSBZNDYII1yIN8WrLjF3m9fzKnts2BOTfAnA=", "last_login": null, "is_superuser": false, "first_name": "", "last_name": "", "is_staff": false, "is_active": true, "date_joined": "2024-09-10T10:32:14Z", "email": "moderator@lms.com", "phone_number": null, "city": null, "avatar": "", "groups": [1], "user_permissions": []}}, {"model": "users.user", "pk": 7, "fields": {"password": "pbkdf2_sha256$870000$vyRVVI1ZDR5XTdUHOUiZ2q$xeSMAXN4kn+4/nbYJjtTFyLH1Gz2IBfSkR34ATgTmm0=", "last_login": null, "is_superuser": false, "first_name": "", "last_name": "", "is_staff": false, "is_active": true, "date_joined": "2024-09-16T20:40:59.842Z", "email": "owner_course@lms.com", "phone_number": null, "city": null, "avatar": "", "groups": [], "user_permissions": []}}, {"model": "users.payments", "pk": 1, "fields": {"user": 4, "payment_date": "2024-09-12T10:29:42.342Z", "paid_course": 2, "paid_lesson": null, "payment_amount": "10000.00", "payment_method": "card"}}, {"model": "users.payments", "pk": 2, "fields": {"user": 5, "payment_date": "2024-09-12T10:29:42.342Z", "paid_course": null, "paid_lesson": 3, "payment_amount": "3000.00", "payment_method": "cash"}}, {"model": "users.payments", "pk": 3, "fields": {"user": 5, "payment_date": "2024-09-12T10:29:42.342Z", "paid_course": null, "paid_lesson": 4, "payment_amount": "3500.00", "payment_method": "cash"}}, {"model": "users.payments", "pk": 4, "fields": {"user": 5, "payment_date": "2024-09-12T10:29:42.342Z", "paid_course": null, "paid_lesson": 2, "payment_amount": "3000.00", "payment_method": "cash"}}]
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$870000$KDSmaSLjzvbFTkdLlgGNBm$eZ7sgdKCP+KBMAflgZMBK7V30BuXp9dbDG4DwZUCb1c=",
+      "last_login": "2024-09-10T10:58:09.179Z",
+      "is_superuser": true,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-09-06T08:34:34.240Z",
+      "email": "admin@lms.com",
+      "phone_number": null,
+      "city": null,
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$870000$4RYoKlRNIb3ktCxaWGhdnN$C4qis77HVykD3TrrxeQLRV+LFsnBFv8+QoCYYxBoNIE=",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-09-06T09:07:38.317Z",
+      "email": "user_1@lms.com",
+      "phone_number": null,
+      "city": "Москва",
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$870000$4RYoKlRNIb3ktCxaWGhdnN$C4qis77HVykD3TrrxeQLRV+LFsnBFv8+QoCYYxBoNIE=",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-09-06T09:07:38Z",
+      "email": "user_2@lms.com",
+      "phone_number": null,
+      "city": "Москва",
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$870000$WR1rqSvnFJOAWnG0jV6cqu$b5Is+3RkSBZNDYII1yIN8WrLjF3m9fzKnts2BOTfAnA=",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-09-10T10:32:14Z",
+      "email": "moderator@lms.com",
+      "phone_number": null,
+      "city": null,
+      "avatar": "",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 7,
+    "fields": {
+      "password": "pbkdf2_sha256$870000$vyRVVI1ZDR5XTdUHOUiZ2q$xeSMAXN4kn+4/nbYJjtTFyLH1Gz2IBfSkR34ATgTmm0=",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-09-16T20:40:59.842Z",
+      "email": "owner_course@lms.com",
+      "phone_number": null,
+      "city": null,
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.payments",
+    "pk": 15,
+    "fields": {
+      "user": 5,
+      "payment_date": "2024-09-19T21:42:06.740Z",
+      "paid_course": null,
+      "paid_lesson": 2,
+      "payment_amount": "3000.00",
+      "payment_method": "card",
+      "session_id": "cs_test_a1V7T6jPRPx3OiXSLrWoclMnnNbcPg1p4AgTafA9WS5JEY3xagctXeFhxG",
+      "link": "https://checkout.stripe.com/c/pay/cs_test_a1V7T6jPRPx3OiXSLrWoclMnnNbcPg1p4AgTafA9WS5JEY3xagctXeFhxG#fidkdWxOYHwnPyd1blpxYHZxWjA0VDVXbDA3S2QwNm9EVXB1RjZmVGwxPWFCUmFEcHJST3VdZ39LPUpiakZNRHV9RENGT0BRRjJER3I2STJMTk9dUFYxNnZWZlxJdXRwY2dMf1diQWZfbGFmNTVyQW5qQkNJNicpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl",
+      "payment_status": "complete"
+    }
+  },
+  {
+    "model": "users.payments",
+    "pk": 17,
+    "fields": {
+      "user": 4,
+      "payment_date": "2024-09-20T05:57:30.322Z",
+      "paid_course": 2,
+      "paid_lesson": null,
+      "payment_amount": "4000.00",
+      "payment_method": "cash",
+      "session_id": null,
+      "link": null,
+      "payment_status": "Awaiting payment"
+    }
+  },
+  {
+    "model": "users.payments",
+    "pk": 18,
+    "fields": {
+      "user": 4,
+      "payment_date": "2024-09-20T06:01:30.576Z",
+      "paid_course": 3,
+      "paid_lesson": null,
+      "payment_amount": "3500.00",
+      "payment_method": "card",
+      "session_id": "cs_test_a1edCMnAHxTIk2feOXrFHDRBKlvy5njRyPLV9uVCUYzRzm3XQOQ88eddY1",
+      "link": "https://checkout.stripe.com/c/pay/cs_test_a1edCMnAHxTIk2feOXrFHDRBKlvy5njRyPLV9uVCUYzRzm3XQOQ88eddY1#fidkdWxOYHwnPyd1blpxYHZxWjA0VDVXbDA3S2QwNm9EVXB1RjZmVGwxPWFCUmFEcHJST3VdZ39LPUpiakZNRHV9RENGT0BRRjJER3I2STJMTk9dUFYxNnZWZlxJdXRwY2dMf1diQWZfbGFmNTVyQW5qQkNJNicpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl",
+      "payment_status": "open"
+    }
+  },
+  {
+    "model": "users.payments",
+    "pk": 21,
+    "fields": {
+      "user": 4,
+      "payment_date": "2024-09-20T09:24:28.917Z",
+      "paid_course": 2,
+      "paid_lesson": null,
+      "payment_amount": "3500.00",
+      "payment_method": "card",
+      "session_id": "cs_test_a1Je5aba8YnAgyhbc0Xy2pZiDVSy7I5fFdyr0DmRKEOU6JPpFmjJpRQzPI",
+      "link": "https://checkout.stripe.com/c/pay/cs_test_a1Je5aba8YnAgyhbc0Xy2pZiDVSy7I5fFdyr0DmRKEOU6JPpFmjJpRQzPI#fidkdWxOYHwnPyd1blpxYHZxWjA0VDVXbDA3S2QwNm9EVXB1RjZmVGwxPWFCUmFEcHJST3VdZ39LPUpiakZNRHV9RENGT0BRRjJER3I2STJMTk9dUFYxNnZWZlxJdXRwY2dMf1diQWZfbGFmNTVyQW5qQkNJNicpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl",
+      "payment_status": "complete"
+    }
+  },
+  {
+    "model": "users.payments",
+    "pk": 35,
+    "fields": {
+      "user": 5,
+      "payment_date": "2024-09-20T19:23:11.764Z",
+      "paid_course": 2,
+      "paid_lesson": null,
+      "payment_amount": "3500.00",
+      "payment_method": "card",
+      "session_id": "cs_test_a1xvOzLaLfzL2piII5Pm5nKVGWJ5CEUddsdTUGLdMmqMu8o1AlKsitex3N",
+      "link": "https://checkout.stripe.com/c/pay/cs_test_a1xvOzLaLfzL2piII5Pm5nKVGWJ5CEUddsdTUGLdMmqMu8o1AlKsitex3N#fidkdWxOYHwnPyd1blpxYHZxWjA0VDVXbDA3S2QwNm9EVXB1RjZmVGwxPWFCUmFEcHJST3VdZ39LPUpiakZNRHV9RENGT0BRRjJER3I2STJMTk9dUFYxNnZWZlxJdXRwY2dMf1diQWZfbGFmNTVyQW5qQkNJNicpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl",
+      "payment_status": "complete"
+    }
+  }
+]
