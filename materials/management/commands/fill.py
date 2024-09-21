@@ -234,6 +234,9 @@ class Command(BaseCommand):
                     paid_lesson=paid_lesson,
                     payment_amount=payments["fields"]["payment_amount"],
                     payment_method=payments["fields"]["payment_method"],
+                    session_id=payments["fields"]["session_id"],
+                    payment_status=payments["fields"]["payment_status"],
+                    link=payments["fields"]["link"],
                 )
             )
 
