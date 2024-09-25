@@ -15,6 +15,7 @@ from materials.models import Course, Lesson, Subscription
 from materials.paginator import CustomPagination
 from materials.permissions import IsModerator, IsOwner
 from materials.serializers import CourseSerializer, LessonSerializer, SubscriptionSerializer
+from materials.tasks import send_mail_update_course
 
 
 class CourseViewSet(ModelViewSet):
@@ -37,6 +38,11 @@ class CourseViewSet(ModelViewSet):
     def perform_create(self, serializer):
         """ Метод для автоматической привязки создаваемого объекта к авторизованному пользователю"""
         serializer.save(owner=self.request.user)
+
+    def perform_update(self, serializer):
+        """ Метод для отправки сообщения подписанным пользователям при обновлении курса """
+        course = serializer.save()
+        send_mail_update_course.delay(course.pk)
 
     # def get_queryset(self):
     #     """ Метод возвращает для 'list' только курсы владельца или все курсы для модератора"""
