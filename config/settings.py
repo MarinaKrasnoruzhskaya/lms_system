@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "users",
     "materials",
     "drf_spectacular",
+    "django_celery_beat",
 ]
 
 MIDDLEWARE = [
@@ -197,3 +198,5 @@ CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL")
 
 # set the celery result backend
 CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND")
+
+CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
