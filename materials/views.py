@@ -96,6 +96,11 @@ class LessonUpdateAPIView(UpdateAPIView):
     serializer_class = LessonSerializer
     permission_classes = [IsAuthenticated, IsModerator | IsOwner]
 
+    def perform_update(self, serializer):
+        """ Метод для отправки сообщения подписанным пользователям при обновлении урока курса """
+        lesson = serializer.save()
+        send_mail_update_course.delay(lesson.course_id)
+
 
 class LessonDestroyAPIView(DestroyAPIView):
     """Класс-контроллер на основе базового класса дженерика для удаления урока"""
