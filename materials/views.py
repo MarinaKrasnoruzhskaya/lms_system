@@ -1,3 +1,5 @@
+from datetime import datetime, timedelta
+
 from django.contrib.auth.models import Group
 from rest_framework.generics import (
     CreateAPIView,
@@ -42,7 +44,8 @@ class CourseViewSet(ModelViewSet):
     def perform_update(self, serializer):
         """ Метод для отправки сообщения подписанным пользователям при обновлении курса """
         course = serializer.save()
-        send_mail_update_course.delay(course.pk)
+        eta = datetime.now() + timedelta(hours=4)
+        send_mail_update_course.apply_async(args=[course.pk], eta=eta)
 
     # def get_queryset(self):
     #     """ Метод возвращает для 'list' только курсы владельца или все курсы для модератора"""

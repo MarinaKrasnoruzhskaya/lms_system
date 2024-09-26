@@ -1,16 +1,12 @@
-from datetime import datetime, timedelta
-
-import pytz
-
-from config import settings
+from materials.models import Subscription
 
 
-def is_difference_datetime(datetime_, hours=0, days=0):
-    """Функция сравнивает разницу между текущим временем и переданным datetime и интервалом времени в часах и днях """
+def get_list_email_subscript_user(course):
+    """ Возвращает список email пользователей, подписанных на переданный course"""
 
-    zone = pytz.timezone(settings.TIME_ZONE)
-    current_datetime = datetime.now(zone)
-    print(current_datetime - datetime_)
-    print(timedelta(days=days, hours=hours))
-    print(current_datetime - datetime_ >= timedelta(days=days, hours=hours))
-    return current_datetime - datetime_ >= timedelta(days=days, hours=hours)
+    list_email = []
+
+    for subscription in Subscription.objects.filter(course=course):
+        list_email.append(subscription.user.email)
+
+    return list_email
