@@ -42,6 +42,14 @@
     ```sh
    python manage.py fill
    ```
+10. Запустить Celery worker
+   ```sh
+   celery -A config worker -l INFO
+   ```
+11. Запустить планировщик Celery beat
+   ```sh
+   celery -A config beat -l info -S django
+   ```    
 
 ## Руководство по использованию
 

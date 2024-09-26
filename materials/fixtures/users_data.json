@@ -4,7 +4,6 @@
     "pk": 1,
     "fields": {
       "password": "pbkdf2_sha256$870000$KDSmaSLjzvbFTkdLlgGNBm$eZ7sgdKCP+KBMAflgZMBK7V30BuXp9dbDG4DwZUCb1c=",
-      "last_login": "2024-09-10T10:58:09.179Z",
       "is_superuser": true,
       "first_name": "",
       "last_name": "",
@@ -15,6 +14,7 @@
       "phone_number": null,
       "city": null,
       "avatar": "",
+      "last_login": "2024-09-26T18:27:03.068Z",
       "groups": [],
       "user_permissions": []
     }
@@ -24,17 +24,17 @@
     "pk": 4,
     "fields": {
       "password": "pbkdf2_sha256$870000$4RYoKlRNIb3ktCxaWGhdnN$C4qis77HVykD3TrrxeQLRV+LFsnBFv8+QoCYYxBoNIE=",
-      "last_login": null,
       "is_superuser": false,
       "first_name": "",
       "last_name": "",
       "is_staff": false,
       "is_active": true,
-      "date_joined": "2024-09-06T09:07:38.317Z",
+      "date_joined": "2024-09-06T09:07:38Z",
       "email": "user_1@lms.com",
       "phone_number": null,
       "city": "Москва",
       "avatar": "",
+      "last_login": "2024-09-26T18:27:03.068Z",
       "groups": [],
       "user_permissions": []
     }
@@ -44,7 +44,6 @@
     "pk": 5,
     "fields": {
       "password": "pbkdf2_sha256$870000$4RYoKlRNIb3ktCxaWGhdnN$C4qis77HVykD3TrrxeQLRV+LFsnBFv8+QoCYYxBoNIE=",
-      "last_login": null,
       "is_superuser": false,
       "first_name": "",
       "last_name": "",
@@ -55,6 +54,7 @@
       "phone_number": null,
       "city": "Москва",
       "avatar": "",
+      "last_login": "2024-09-26T18:27:03.068Z",
       "groups": [],
       "user_permissions": []
     }
@@ -64,7 +64,6 @@
     "pk": 6,
     "fields": {
       "password": "pbkdf2_sha256$870000$WR1rqSvnFJOAWnG0jV6cqu$b5Is+3RkSBZNDYII1yIN8WrLjF3m9fzKnts2BOTfAnA=",
-      "last_login": null,
       "is_superuser": false,
       "first_name": "",
       "last_name": "",
@@ -75,6 +74,7 @@
       "phone_number": null,
       "city": null,
       "avatar": "",
+      "last_login": "2024-09-26T18:27:03.068Z",
       "groups": [
         1
       ],
@@ -86,17 +86,37 @@
     "pk": 7,
     "fields": {
       "password": "pbkdf2_sha256$870000$vyRVVI1ZDR5XTdUHOUiZ2q$xeSMAXN4kn+4/nbYJjtTFyLH1Gz2IBfSkR34ATgTmm0=",
-      "last_login": null,
       "is_superuser": false,
       "first_name": "",
       "last_name": "",
       "is_staff": false,
       "is_active": true,
-      "date_joined": "2024-09-16T20:40:59.842Z",
+      "date_joined": "2024-09-16T20:40:59Z",
       "email": "owner_course@lms.com",
       "phone_number": null,
       "city": null,
       "avatar": "",
+      "last_login": "2024-09-26T18:27:03.068Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 8,
+    "fields": {
+      "password": "pbkdf2_sha256$870000$CpzXt1yqxQWrJzuENmhgj0$WtcsAWMur0uyGGDJVyOgPgEKqZivXy2rBT9iMhZ269Q=",
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-09-26T11:49:38Z",
+      "email": "test@test.test",
+      "phone_number": null,
+      "city": null,
+      "avatar": "",
+      "last_login": "2024-08-25T18:27:03.068Z",
       "groups": [],
       "user_permissions": []
     }
@@ -106,7 +126,7 @@
     "pk": 15,
     "fields": {
       "user": 5,
-      "payment_date": "2024-09-19T21:42:06.740Z",
+      "payment_date": "2024-09-21T08:57:09.277Z",
       "paid_course": null,
       "paid_lesson": 2,
       "payment_amount": "3000.00",
@@ -121,7 +141,7 @@
     "pk": 17,
     "fields": {
       "user": 4,
-      "payment_date": "2024-09-20T05:57:30.322Z",
+      "payment_date": "2024-09-21T08:57:09.277Z",
       "paid_course": 2,
       "paid_lesson": null,
       "payment_amount": "4000.00",
@@ -136,7 +156,7 @@
     "pk": 18,
     "fields": {
       "user": 4,
-      "payment_date": "2024-09-20T06:01:30.576Z",
+      "payment_date": "2024-09-21T08:57:09.277Z",
       "paid_course": 3,
       "paid_lesson": null,
       "payment_amount": "3500.00",
@@ -151,7 +171,7 @@
     "pk": 21,
     "fields": {
       "user": 4,
-      "payment_date": "2024-09-20T09:24:28.917Z",
+      "payment_date": "2024-09-21T08:57:09.278Z",
       "paid_course": 2,
       "paid_lesson": null,
       "payment_amount": "3500.00",
@@ -166,7 +186,7 @@
     "pk": 35,
     "fields": {
       "user": 5,
-      "payment_date": "2024-09-20T19:23:11.764Z",
+      "payment_date": "2024-09-21T08:57:09.278Z",
       "paid_course": 2,
       "paid_lesson": null,
       "payment_amount": "3500.00",
