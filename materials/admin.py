@@ -10,7 +10,7 @@ class CourseAdmin(admin.ModelAdmin):
 
 @admin.register(Lesson)
 class LessonAdmin(admin.ModelAdmin):
-    list_display = ("title", "description", "picture", "link_to_video", "course")
+    list_display = ("title", "description", "picture", "link_to_video", "course", 'updated_at')
 
 
 @admin.register(Subscription)
