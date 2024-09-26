@@ -7,7 +7,7 @@ from django.core.management import BaseCommand
 from django.db import connection
 
 from config.settings import BASE_DIR
-from materials.models import Course, Lesson
+from materials.models import Course, Lesson, Subscription
 from users.models import User, Payments
 
 
@@ -183,6 +183,8 @@ class Command(BaseCommand):
                     title=course["fields"]["title"],
                     picture=course["fields"]["picture"],
                     description=course["fields"]["description"],
+                    owner=User.objects.get(pk=course["fields"]["owner"]),
+                    updated_at=course["fields"]["updated_at"]
                 )
             )
 
@@ -204,11 +206,31 @@ class Command(BaseCommand):
                     picture=lesson["fields"]["picture"],
                     link_to_video=lesson["fields"]["link_to_video"],
                     course=Course.objects.get(pk=lesson["fields"]["course"]),
+                    owner=User.objects.get(pk=lesson["fields"]["owner"]),
+                    updated_at=lesson["fields"]["updated_at"]
                 )
             )
 
         Lesson.objects.bulk_create(lesson_for_create)
         Command.select_setval_id("materials", "lesson")
+
+        Subscription.objects.all().delete()
+        Command.truncate_table_restart_id("materials", "subscription")
+
+        subscription_for_create = []
+        for subscription in Command.json_read_data(
+                "materials_data.json", "materials", "subscription"
+        ):
+            subscription_for_create.append(
+                Subscription(
+                    id=subscription["pk"],
+                    user=User.objects.get(pk=subscription["fields"]["user"]),
+                    course=Course.objects.get(pk=subscription["fields"]["course"]),
+                )
+            )
+
+        Subscription.objects.bulk_create(subscription_for_create)
+        Command.select_setval_id("materials", "subscription")
 
         Payments.objects.all().delete()
         Command.truncate_table_restart_id("users", "payments")
