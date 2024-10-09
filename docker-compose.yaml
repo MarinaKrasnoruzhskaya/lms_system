@@ -1,6 +1,13 @@
 version: "3"
 
 services:
+
+  redis:
+    image: redis:latest
+    restart: on-failure
+    expose:
+      - "6379"
+
   db:
     image: postgres
     restart: on-failure
@@ -27,6 +34,8 @@ services:
         condition: service_healthy
     volumes:
       - .:/app
+    env_file:
+      - .env
 
 
 volumes:
