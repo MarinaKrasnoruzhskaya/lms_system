@@ -69,6 +69,12 @@
    docker run -it --network=lms -p 8000:8000 -d lms_app
    ```
 
+## Запуск проекта с Docker-Compose
+
+1. Создание и запуск контейнера с проектом:
+  ```sh
+   docker-compose up -d --build
+   ```
 
 ## Пользователи проекта:
 
