@@ -64,9 +64,10 @@
 1. Создание и запуск контейнера с проектом:
   ```sh
    docker network create lms
-   docker run -d --network=lms --name=db -p 5433:5432 -e POSTGRES_DB=lms_system -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=123456 postgres:latest
+   docker run -d --network=lms --name db -p 5433:5432 -e POSTGRES_DB=lms_system -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=123456 postgres:latest
    docker build . -t lms_app
    docker run -it --network=lms -p 8000:8000 -d lms_app
+   docker exec -it <CONTAINER ID> python manage.py migrate && python manage.py runserver 0.0.0.0:8000
    ```
 
 ## Запуск проекта с Docker-Compose
