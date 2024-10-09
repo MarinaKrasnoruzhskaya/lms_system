@@ -59,6 +59,17 @@
    python manage.py runserver
    ```
 
+## Запуск проекта с Docker
+
+1. Создание и запуск контейнера с проектом:
+  ```sh
+   docker network create lms
+   docker run -d --network=lms --name=postgres_container -p 5433:5432 -e POSTGRES_DB=lms_system -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=123456 postgres:latest
+   docker build . -t lms_app
+   docker run -it --network=lms -p 8000:8000 -d lms_app
+   ```
+
+
 ## Пользователи проекта:
 
 1. Superuser: {"email": "admin@lms.com", "password": "admin"}
