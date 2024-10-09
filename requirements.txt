@@ -39,6 +39,7 @@ PyJWT==2.9.0
 python-crontab==3.2.0
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
+pytz==2024.2
 PyYAML==6.0.2
 redis==5.0.8
 referencing==0.35.1
@@ -54,5 +55,3 @@ uritemplate==4.1.1
 urllib3==2.2.3
 vine==5.1.0
 wcwidth==0.2.13
-
-pytz~=2024.2
